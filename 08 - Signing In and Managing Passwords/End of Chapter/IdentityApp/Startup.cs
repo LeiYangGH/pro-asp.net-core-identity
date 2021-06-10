@@ -53,19 +53,7 @@ namespace IdentityApp {
             services.AddScoped<TokenUrlEncoderService>();
             services.AddScoped<IdentityEmailService>();
 
-            services.AddAuthentication()
-                .AddFacebook(opts => {
-                    opts.AppId = Configuration["Facebook:AppId"];
-                    opts.AppSecret = Configuration["Facebook:AppSecret"];
-                })
-                .AddGoogle(opts => {
-                    opts.ClientId = Configuration["Google:ClientId"];
-                    opts.ClientSecret = Configuration["Google:ClientSecret"];
-                })
-                .AddTwitter(opts => {
-                    opts.ConsumerKey = Configuration["Twitter:ApiKey"];
-                    opts.ConsumerSecret = Configuration["Twitter:ApiSecret"];
-                });
+            services.AddAuthentication();
 
             services.ConfigureApplicationCookie(opts => {
                 opts.LoginPath = "/Identity/SignIn";
